@@ -1,0 +1,109 @@
+-----------------------------------------------------------------------
+                            MUST HAVE
+-----------------------------------------------------------------------
+
+-- Product catalog
+    - Can browse all products, seeing some info
+    - Can search up products and filter by different specs
+
+-- Product details
+    - Every product has its own details page with more info 
+        (will probably use BGG API here)
+
+-- Authentification
+    - Login/Register
+    - Reset password
+    - Email confirmation
+    - Two types of users - clients and admins
+    - Guest users can still browse products and read reviews
+    - May use third party software (?)
+
+-- Product Reviews
+    - Any logged in user can leave a rating (1 to 5 stars)
+         and a review comment that can be seen on the 
+         product details page
+
+-- Admin panel
+    - CRUD interface for adding, modifying and deleting products
+
+-- Shopping Cart
+    - A user can add products to their shopping card
+
+-- Simulated billing
+    - A user can "buy" the products in his shopping card and a (fake)
+        bill with the purchase info will be emailed to them.
+    - May use Stripe for this
+
+-- User personal page
+    - A page accessible only to the logged in user, where they can
+        see the history of their purchase or modify their account
+        settings (contact info etc.)
+
+-- Contact page
+    - Any logged in user can contact me via email. Will need to 
+        introduce some kind of filter in order to reduce spamming.
+
+
+
+-----------------------------------------------------------------------
+                            SHOULD HAVE
+-----------------------------------------------------------------------
+
+-- A cookie system that can recommend similar products,
+    depending on user purchase history (something like "you like
+    RPG boardgames? - here are more!", or dlcs for already bought ones)
+
+-- Stock / Out of Stock products
+    - An admin can also see the quantity of each product
+        that is available for selling
+    - An admin can check/uncheck if a product is in stock or not
+    - A client can ask for a restock of a certain product on a special
+        page - admins will be notified on their dashboards or emails
+    
+-- Admin Dashboard 
+    - Admins gain access to a personal dashboard where they can see
+        statistics for products or categories (nr sold, revenue, etc.)
+    - They can also moderate comments and ban users
+
+-- Geek Stuff, not just board games
+    - the shop will sell minifigures, cards, and other stuff too
+
+-- Shop news
+    - A page/section for new products and other BG Shop news
+
+
+
+-----------------------------------------------------------------------
+                            COULD HAVE
+-----------------------------------------------------------------------
+
+-- Moderator role 
+    - Can delete comments
+
+-- General geek news
+    - A page with embedded posts from other websites like BGG
+
+-- Promotions and Discounts
+    - A system for discounts and promotions, not sure how exactly rn
+
+-- User Wishlist
+    - Users can add items to their wishlist
+    - Users can be notified via email (or just on the site)
+        if an item in their wishlist is on discount
+
+
+-----------------------------------------------------------------------
+                            WON'T HAVE
+-----------------------------------------------------------------------
+
+-- Any kind of real billing 
+    - This project does not include actual money transactions
+
+-- Forums
+    - System of posts and comments
+    - Too complicated to implement for now
+
+-- AI-Based product recommendations
+    - Used with Tensorflow.js  
+    - No training data available
+    - Too complicated to implement
