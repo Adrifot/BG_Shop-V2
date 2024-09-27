@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Game Show Page</title>
+</head>
+<body>
+    <div>
+        <figure>
+            <img src="<%= game.imageUrl %>" alt="">
+        </figure>
+        <h5><%= game.name %></h5>
+        <p><%= game.description %></p>
+        <p><%= game.price %></p>
+        <ul><li><%= game.category %></li></ul>
+    </div>
+    <a href="/boardgames/<%= game._id %>/edit">Edit</a>
+    <a href="/boardgames">Back to all</a>
+    <form action="/boardgames/<%= game._id %>?_method=DELETE" method="POST">
+        <button>Delete Boardgame</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Add new Boardgame</title>
+</head>
+<body>
+    <div class="row">
+        <h1>New Boardgame</h1>
+        <form action="/boardgames" method="POST">
+            <div>
+                <label for="name">Boardgame name:</label>
+                <input type="text" id="name" name="boardgame[name]">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="boardgame[description]" id="description"></textarea>
+            </div>
+            <div>
+                <label for="">Price:</label>
+                <input type="number" step="any" id="price" name="boardgame[price]">
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <select name="boardgame[category]" id="category">
+                    <% for(let categ of BGCategories) { %>
+                        <option value="<%= categ %>"><%= categ %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div>
+                <label for="image">Image URL:</label>
+                <input type="text" name="boardgame[imageUrl]" id="image">
+            </div>
+            <button>Submit</button>
+        </form>
+        <a href="/boardgames">Cancel</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Boardgames</title>
+</head>
+<body>
+    <h1>All Boardgames</h1>
+    <% for (let boardgame of boardgames) { %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%= boardgame.imageUrl %>" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= boardgame.name %></h5>
+                        <div class="card-text">
+                            <p><%= boardgame.description %></p>
+                            <p>$<%= boardgame.price %></p>
+                            <p><%= boardgame.category %></p>
+                            <p><a href="/boardgames/<%= boardgame._id %>">View</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>

@@ -47,13 +47,13 @@ const BoardgameSchema = new mongoose.Schema({
 
     minPlayers: {
         type: Number,
-        required: true,
+        //required: true,
         min: 1
     },
 
     maxPlayers: {
         type: Number,
-        required: true,
+        //required: true,
         min: 1
     },
 
