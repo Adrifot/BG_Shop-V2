@@ -1,10 +1,14 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
+// colors
 $body-bg: #FCFFFC; $white: #FCFFFC;
 $body-color: #1E1E24;
-
 $primary: #04724D;
 $secondary: #7AC74F;
 $contrast: #6279B8;
+
+// spacing
+$padding-small: 0.2em;
+$padding-med: 0.5em;
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";

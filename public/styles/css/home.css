@@ -11844,11 +11844,69 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-a {
-  color: #6279B8;
+.slide-buttons {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-50%);
+  padding: 0 0.5em;
+  z-index: 99;
 }
 
-main {
-  width: 85%;
+.carousel-prev, .carousel-next {
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+#home-carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
   margin: auto;
+  overflow: hidden;
+  background-color: gray;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+  display: none;
+  top: 0;
+  background-color: pink;
+}
+.slide img {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+}
+
+.active-slide {
+  display: block;
+  z-index: 2;
+}
+
+.prev-slide {
+  transform: translateX(-100%);
+  display: block;
+  z-index: 1;
+}
+
+.next-slide {
+  transform: translateX(100%);
+  display: block;
+  z-index: 1;
 }

@@ -26,6 +26,7 @@
 
 #navbar-left {
     width: 40%;
+    padding: 0;
 }
 
 #navbar-right {
@@ -38,4 +39,12 @@ ul {
         text-decoration: none;
         color: $white;
     }
+}
+
+#navbar-logo {
+    font-size: 1.3em;
+    font-weight: 600;
+    background-color: $secondary;
+    padding: $padding-small $padding-med;
+    border-radius: 1em;
 }

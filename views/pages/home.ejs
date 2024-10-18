@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/styles/css/home.css">
     <title>BG Shop - Home</title>
 </head>
 <body>
     <%- include("../partials/header") %>
+    <main>
+        <div id="home-carousel">
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=1" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=2" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=3" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=4" alt="">
+            </div>
+            <div class="slide-buttons">
+                <button class="carousel-prev">prev</button>
+                <button class="carousel-next">next</button>
+            </div>
+            
+        </div>
+    </main>
+    <script src="/js/home.js"></script>
 </body>
 </html>

@@ -11870,6 +11870,7 @@ textarea.form-control-lg {
 
 #navbar-left {
   width: 40%;
+  padding: 0;
 }
 
 #navbar-right {
@@ -11882,4 +11883,12 @@ ul {
 ul a {
   text-decoration: none;
   color: #FCFFFC;
+}
+
+#navbar-logo {
+  font-size: 1.3em;
+  font-weight: 600;
+  background-color: #7AC74F;
+  padding: 0.2em 0.5em;
+  border-radius: 1em;
 }
