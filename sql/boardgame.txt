@@ -1,0 +1,20 @@
+Table boardgame {
+  id int PK
+  name varchar(50) [not null]
+  description text [not null]
+  price money [not null, note: '>= 0']
+  category ENUM [not null]
+  tags varchar[](30)
+  imagesrc varchar(100) [not null]
+  stock int [not null, note: ">= 0"]
+  rating decimal(2, 1) [note: "def: 0, >= 0, <= 5"]
+  minplayers int [not null, note: ">= 1"]
+  maxplayers int [not null, note: ">= 1"]
+  playtime int
+  age int [not null]
+  designer varchar(50)
+  publisher varchar(50)
+  releaseyear int
+  isavailable boolean [not null, note: "default: true"]
+  isexpansion boolean [not, null, note: "default: false"]
+}

@@ -7,7 +7,7 @@
 <body>
     <div class="row">
         <h1>Edit Boardgame</h1>
-        <form action="/boardgames/<%= game._id %>?_method=PUT" method="POST">
+        <form action="/boardgames/<%= game.id %>?_method=PUT" method="POST">
             <div>
                 <label for="name">Boardgame name:</label>
                 <input type="text" id="name" name="boardgame[name]" value="<%= game.name %>">
@@ -30,11 +30,11 @@
             </div>
             <div>
                 <label for="image">Image URL:</label>
-                <input type="text" name="boardgame[imageUrl]" id="image" value="<%= game.imageUrl %>">
+                <input type="text" name="boardgame[imagesrc]" id="image" value="<%= game.imagesrc %>">
             </div>
             <button>Submit</button>
         </form>
-        <a href="/boardgames/<%= game._id %>">Cancel</a>
+        <a href="/boardgames/<%= game.id %>">Cancel</a>
     </div>
 </body>
 </html>
