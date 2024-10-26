@@ -29,8 +29,29 @@
                 </select>
             </div>
             <div>
-                <label for="image">Image URL:</label>
-                <input type="text" name="boardgame[imageUrl]" id="image">
+                <label for="image">Image SRC:</label>
+                <input type="text" name="boardgame[imagesrc]" id="image">
+            </div>
+            <div>
+                <label for="stock">Stock:</label>
+                <input type="number" step="1" id="stock" name="boardgame[stock]">
+            </div>
+            <div>
+                <label for="rating">Rating:</label>
+                <input type="number" step="1" min="0" max="5" id="rating" name="boardgame[rating]">
+            </div>
+            <div>
+                <label for="players">Players:</label>
+                <div id="players">
+                    <label for="minplayers">Min:</label>
+                    <input type="number" step="1" min="1" id="minplayers" name="boardgame[minplayers]">
+                    <label for="maxplayers">Max:</label>
+                    <input type="number" step="1" min="1" id="maxplayers" name="boardgame[maxplayers]">
+                </div>
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" step="1" id="age" name="boardgame[age]">
             </div>
             <button>Submit</button>
         </form>
