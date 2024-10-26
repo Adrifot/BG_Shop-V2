@@ -13,12 +13,18 @@ const Boardgame = sequelize.define(
 
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
         },
 
         description: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
         },
 
         price: {
@@ -27,7 +33,7 @@ const Boardgame = sequelize.define(
             validate: {
                 min: 0.01,
                 isFloat: {
-                    msg: "Price must be a valid number."
+                    msg: "Price must be a valid number"
                 }
             }
         },
@@ -39,12 +45,18 @@ const Boardgame = sequelize.define(
 
         tags: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: true
+            allowNull: true,
+            validate: {
+                notEmpty: true
+            }
         },
 
         imagesrc: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
         },
 
         stock: {
