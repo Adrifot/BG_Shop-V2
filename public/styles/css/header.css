@@ -11848,6 +11848,8 @@ textarea.form-control-lg {
   width: 100%;
   position: sticky;
   background-color: #04724D;
+  top: 0;
+  z-index: 9;
 }
 
 #navbar-top-content {
