@@ -11844,6 +11844,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   color: #6279B8;
 }

@@ -11876,7 +11876,7 @@ textarea.form-control-lg {
   height: 400px;
   margin: auto;
   overflow: hidden;
-  background-color: gray;
+  background-color: #1E1E24;
 }
 
 .slide {
@@ -11886,7 +11886,6 @@ textarea.form-control-lg {
   transition: transform 0.5s ease-in-out;
   display: none;
   top: 0;
-  background-color: pink;
 }
 .slide img {
   margin-left: 50%;
@@ -11909,4 +11908,39 @@ textarea.form-control-lg {
   transform: translateX(100%);
   display: block;
   z-index: 1;
+}
+
+.home-content-box {
+  padding: 1em 0;
+  text-align: center;
+  display: flex;
+}
+.home-content-box p {
+  width: 30%;
+  margin: 0;
+}
+
+#box-1 {
+  background-color: #7AC74F;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#box-2 {
+  background-color: #04724D;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#box-2 div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#text-separator p {
+  font-size: 1.5em;
+  text-align: center;
 }
