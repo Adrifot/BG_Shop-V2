@@ -103,3 +103,28 @@
         text-align: center;
     }
 }
+
+#category-section {
+    background-color: $secondary;
+    padding: $padding-small $padding-big;
+    text-align: center;
+    h4 {
+        padding: $padding-med;
+    }
+}
+
+#categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5em;
+    .category-card {
+        width: 100%;
+        img {
+            width: 100%;
+            margin-bottom: $padding-med;
+        }
+        h5 {
+            text-align: left;
+        }
+    }
+}

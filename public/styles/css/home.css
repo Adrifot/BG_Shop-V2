@@ -11944,3 +11944,28 @@ textarea.form-control-lg {
   font-size: 1.5em;
   text-align: center;
 }
+
+#category-section {
+  background-color: #7AC74F;
+  padding: 0.2em 1em;
+  text-align: center;
+}
+#category-section h4, #category-section .h4 {
+  padding: 0.5em;
+}
+
+#categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5em;
+}
+#categories-grid .category-card {
+  width: 100%;
+}
+#categories-grid .category-card img {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+#categories-grid .category-card h5, #categories-grid .category-card .h5 {
+  text-align: left;
+}
