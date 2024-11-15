@@ -71,17 +71,55 @@
     padding: $padding-big 0;
     text-align: center;
     display: flex;
-    p {
+    >p {
         width: 30%;
         margin: 0;
     }
 }
 
-#box-1 {
+#perks-box {
+    padding: $padding-big $padding-med;
     background-color: $secondary;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    text-align: center;
+}
+
+.perk {
+    width: 20%;
+}
+
+.perk-icon {
+    font-size: 2em;
+    margin-bottom: $padding-small;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-med;
+    background-color: $white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.perk-text {
+    // text-align: center;
+        p {
+            margin: 0;
+            margin-bottom: $padding-small;
+        }
+}
+
+.perk-title {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.perk-description {
+    font-weight: 300;
+    font-size: 0.9em;
+    color: $body-light;
 }
 
 #box-2 {
