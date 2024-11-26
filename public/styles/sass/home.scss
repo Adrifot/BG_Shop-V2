@@ -1,5 +1,13 @@
 @import "custom";
 
+section {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: $padding-big $padding-med;
+    margin-bottom: $padding-big;
+}
+
 .slide-buttons {
     position: absolute;
     display: flex;
@@ -32,7 +40,7 @@
     height: 400px;
     margin: auto;
     overflow: hidden;
-    background-color: $body-color;
+    // background-color: $body-color;
 }
 
 .slide {
@@ -84,6 +92,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    border-radius:  0 0 10px 10px;
 }
 
 .perk {
@@ -100,15 +109,16 @@
     background-color: $white;
     border-radius: 50%;
     box-sizing: border-box;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 3px rgba($black, 0.2);
+    color: $black;
 }
 
 .perk-text {
-    // text-align: center;
-        p {
-            margin: 0;
-            margin-bottom: $padding-small;
-        }
+    p {
+        margin: 0;
+        margin-bottom: $padding-small;
+        color: $black;
+    }
 }
 
 .perk-title {
@@ -117,28 +127,37 @@
 }
 
 .perk-description {
-    font-weight: 300;
+    font-weight: 350;
     font-size: 0.9em;
-    color: $body-light;
+    color: $body-light; 
 }
 
-#box-2 {
+#about-box {
     background-color: $primary;
+    color: $white;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     div {
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
     }
-}
-
-#text-separator {
-    p {
-        font-size: 1.5em;
-        text-align: center;
+    h3 {
+        position: relative;
+        padding-bottom: 0.5em;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: $contrast;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
     }
 }
 

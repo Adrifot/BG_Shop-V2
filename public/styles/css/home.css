@@ -11844,6 +11844,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1em 0.5em;
+  margin-bottom: 1em;
+}
+
 .slide-buttons {
   position: absolute;
   display: flex;
@@ -11876,7 +11884,6 @@ textarea.form-control-lg {
   height: 400px;
   margin: auto;
   overflow: hidden;
-  background-color: #1E1E24;
 }
 
 .slide {
@@ -11927,6 +11934,7 @@ textarea.form-control-lg {
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  border-radius: 0 0 10px 10px;
 }
 
 .perk {
@@ -11943,12 +11951,14 @@ textarea.form-control-lg {
   background-color: #FCFFFC;
   border-radius: 50%;
   box-sizing: border-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 3px rgba(30, 30, 36, 0.2);
+  color: #1E1E24;
 }
 
 .perk-text p {
   margin: 0;
   margin-bottom: 0.2em;
+  color: #1E1E24;
 }
 
 .perk-title {
@@ -11957,27 +11967,38 @@ textarea.form-control-lg {
 }
 
 .perk-description {
-  font-weight: 300;
+  font-weight: 350;
   font-size: 0.9em;
   color: #383843;
 }
 
-#box-2 {
+#about-box {
   background-color: #04724D;
+  color: #FCFFFC;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-#box-2 div {
+#about-box div {
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-
-#text-separator p {
-  font-size: 1.5em;
-  text-align: center;
+#about-box h3, #about-box .h3 {
+  position: relative;
+  padding-bottom: 0.5em;
+}
+#about-box h3::after, #about-box .h3::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: #6279B8;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
 }
 
 #category-section {
