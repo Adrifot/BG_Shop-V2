@@ -2,12 +2,101 @@
 <html lang="en">
 <head>
     <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/styles/css/home.css">
     <title>BG Shop - Home</title>
 </head>
 <body>
-    <div class="row">
-        <h1 class="text-center">Work in progress...</h1>
-        <a href="/admin" class="m-3">Admin's Board</a>
-    </div>
+    <%- include("../partials/header") %>
+    <main>
+        <div id="home-carousel">
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=1" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=2" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=3" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/500/300?random=4" alt="">
+            </div>
+            <div class="slide-buttons">
+                <button class="carousel-prev">prev</button>
+                <button class="carousel-next">next</button>
+            </div>
+        </div>
+        <section class="home-content-box" id="perks-box">
+            <div class="perk">
+                <div class="perk-icon"><i class="fa-solid fa-truck-fast fa-fw"></i></div>
+                <div class="perk-text">
+                    <p class="perk-title">Fast shipping</p>
+                    <p class="perk-description">Get your favorite games delivered quickly, right to your doorstep!</p>
+                </div>
+            </div>
+            <div class="perk">
+                <div class="perk-icon"><i class="fa-solid fa-headset fa-fw"></i></div>
+                <div class="perk-text">
+                    <p class="perk-title">Customer support</p>
+                    <p class="perk-description">Need help? Contact us anytime and someone will get back to you!</p>
+                </div>
+            </div>
+            <div class="perk">
+                <div class="perk-icon"><i class="fa-solid fa-gifts fa-fw"></i></div>
+                <div class="perk-text">
+                    <p class="perk-title">Gift wrapping</p>
+                    <p class="perk-description">Want to surprise your friends with a cool gift? Choose gift wrapping at checkout!</p>
+                </div>
+            </div>
+            <div class="perk">
+                <div class="perk-icon"><i class="fa-solid fa-hand-holding-dollar fa-fw"></i></div>
+                <div class="perk-text">
+                    <p class="perk-title">Loyalty program</p>
+                    <p class="perk-description">Earn points with every purchase and get discounts on future orders!</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-content-box" id="about-box">
+            <img src="https://picsum.photos/300/200?random=6" alt="">
+            <div>
+                <h3>About BGShop</h3>
+                <p>
+                    Here at BGShop, we're passionate about bringing the best experience to all board game players. Whether you're 
+                    a beginner or a seasoned veteran, we're sure you'll find a game to your liking.
+                </p>
+            </div>
+        </section>
+        <section id="category-section">
+            <h4>Shop by category</h4>
+            <div id="categories-grid">
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=7" alt="">
+                    <h5>Category 1</h5>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=8" alt="">
+                    <h5>Category 2</h5>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=9" alt="">
+                    <h5>Category 3</h5>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=10" alt="">
+                    <h5>Category 4</h5>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=11" alt="">
+                    <h5>Category 5</h5>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/300?random=12" alt="">
+                    <h5>Category 6</h5>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include("../partials/footer")  %>
+    <script src="/js/home.js"></script>
 </body>
 </html>

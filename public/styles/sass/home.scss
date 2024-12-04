@@ -1,0 +1,187 @@
+@import "custom";
+
+section {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: $padding-big $padding-med;
+    margin-bottom: $padding-big;
+}
+
+.slide-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 50%; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(-50%); 
+    padding: 0 $padding-med;
+    z-index: 5;
+}
+
+.carousel-prev, .carousel-next {
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    z-index: 99;
+}
+
+#home-carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    // background-color: $body-color;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    display: none;
+    top: 0;
+
+    img {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+    }
+}
+
+.active-slide {
+    display: block; 
+    z-index: 2;
+}
+
+.prev-slide {
+    transform: translateX(-100%);
+    display: block;
+    z-index: 1;
+}
+
+.next-slide {
+    transform: translateX(100%);
+    display: block;
+    z-index: 1;
+}
+
+.home-content-box {
+    padding: $padding-big 0;
+    text-align: center;
+    display: flex;
+    >p {
+        width: 30%;
+        margin: 0;
+    }
+}
+
+#perks-box {
+    padding: $padding-big $padding-med;
+    background-color: $secondary;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border-radius:  0 0 10px 10px;
+}
+
+.perk {
+    width: 20%;
+}
+
+.perk-icon {
+    font-size: 2em;
+    margin-bottom: $padding-small;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-med;
+    background-color: $white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 3px rgba($black, 0.2);
+    color: $black;
+}
+
+.perk-text {
+    p {
+        margin: 0;
+        margin-bottom: $padding-small;
+        color: $black;
+    }
+}
+
+.perk-title {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.perk-description {
+    font-weight: 350;
+    font-size: 0.9em;
+    color: $body-light; 
+}
+
+#about-box {
+    background-color: $primary;
+    color: $white;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    div {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    h3 {
+        position: relative;
+        padding-bottom: 0.5em;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: $contrast;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+    }
+}
+
+#category-section {
+    background-color: $secondary;
+    padding: $padding-small $padding-big;
+    text-align: center;
+    h4 {
+        padding: $padding-med;
+    }
+}
+
+#categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5em;
+    .category-card {
+        width: 100%;
+        img {
+            width: 100%;
+            margin-bottom: $padding-med;
+        }
+        h5 {
+            text-align: left;
+        }
+    }
+}

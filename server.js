@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
+const sass = require("sass");
 const methodOverride = require("method-override");
 
 const sequelize = require("./config/database")
@@ -15,6 +17,7 @@ const PORT = 3030;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static("public"));
 
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
@@ -101,3 +104,26 @@ sequelize.sync()
         console.error("Unable to connect to database: ", err);
     });
 
+function compileSass(sassPath, cssPath) {
+    if(!cssPath) cssPath = path.basename(sassPath).split(".")[0] + ".css";
+    if(!path.isAbsolute(sassPath)) sassPath = path.join(Global.sassDir, sassPath);
+    if(!path.isAbsolute(cssPath)) cssPath = path.join(Global.cssDir, cssPath);
+    resFile = sass.compile(sassPath, {"sourceMap": true});
+    fs.writeFileSync(cssPath, resFile.css);
+}
+
+const sassFiles = fs.readdirSync(Global.sassDir);
+for(let file of sassFiles) {
+    if(path.extname(file) == ".scss") compileSass(file);
+}
+
+fs.watch(Global.sassDir, (event, file) => {
+    if(event == "change" || event == "rename") {
+        let fullPath = path.join(Global.sassDir, file);
+        if(fs.existsSync(fullPath)) compileSass(fullPath);
+    }
+});
+
+app.listen(3030, () => {
+    console.log("Server started on port 3030.");
+});

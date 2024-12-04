@@ -1,0 +1,38 @@
+@import "custom";
+
+footer {
+    background-color: $primary;
+    width: 100%;
+    padding: $padding-med 0;
+}
+
+#footer-content {
+    margin: auto;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    ul {
+        padding: 0;
+    }
+}
+
+#footer-left, #footer-right, #social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-med 0;
+    margin-bottom: 0;
+}
+
+#footer-left, #footer-right, #social-icons {
+    width: 30%;
+    color: $white;
+}
+
+#footer-logo {
+   height: 2.5em;
+}
