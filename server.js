@@ -23,6 +23,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
+const Global = {
+    sassDir: path.join(__dirname, "public/styles/sass"),
+    cssDir: path.join(__dirname, "public/styles/css")
+};
+
 app.get(["/", "/home"], (req, res) => {
     res.render("pages/home");
 });
@@ -94,16 +99,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("pages/error", {err});
 });
 
-sequelize.sync()
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server started on port ${PORT}`);
-        });
-    })
-    .catch(err => {
-        console.error("Unable to connect to database: ", err);
-    });
-
 function compileSass(sassPath, cssPath) {
     if(!cssPath) cssPath = path.basename(sassPath).split(".")[0] + ".css";
     if(!path.isAbsolute(sassPath)) sassPath = path.join(Global.sassDir, sassPath);
@@ -124,6 +119,13 @@ fs.watch(Global.sassDir, (event, file) => {
     }
 });
 
-app.listen(3030, () => {
-    console.log("Server started on port 3030.");
-});
+
+sequelize.sync()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server started on port ${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error("Unable to connect to database: ", err);
+    });
