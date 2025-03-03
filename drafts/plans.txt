@@ -84,7 +84,7 @@
     - A page with embedded posts from other websites like BGG
 
 -- Promotions and Discounts
-    - A system for discounts and promotions, not sure how exactly rn
+    - A system for discounts and promotions, not sure how exactly it would work right now
 
 -- User Wishlist
     - Users can add items to their wishlist

@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 
 const sequelize = require("./config/database")
 const Boardgame = require("./models/boardgame");
+const Review = require("./models/review");
 const BGCategories = ["Strategy", "Party", "Card Game", "Classic", "RPG", "Family", "Uncategorized"];
 
 const ExpressError = require("./utilities/expressError");

@@ -1,0 +1,7 @@
+Reviews: 
+- Add review form to boardgame show page (boardgames/showpage.ejs)
+- On submit: POST to /boardgames/:id/reviews
+
+    await boardgame.findById
+    const review = new Review(req.body.review)
+    Review.boardgameId = boardgameId
