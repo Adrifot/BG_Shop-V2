@@ -8,6 +8,7 @@
 <body>
     <%- include("../partials/header") %>
     <main>
+
         <div id="home-carousel">
             <div class="slide">
                 <img src="https://picsum.photos/500/300?random=1" alt="">
@@ -22,10 +23,11 @@
                 <img src="https://picsum.photos/500/300?random=4" alt="">
             </div>
             <div class="slide-buttons">
-                <button class="carousel-prev">prev</button>
-                <button class="carousel-next">next</button>
+                <button class="carousel-prev">&lt;</button>
+                <button class="carousel-next">&gt;</button>
             </div>
         </div>
+
         <section class="home-content-box" id="perks-box">
             <div class="perk">
                 <div class="perk-icon"><i class="fa-solid fa-truck-fast fa-fw"></i></div>
@@ -56,6 +58,7 @@
                 </div>
             </div>
         </section>
+
         <section class="home-content-box" id="about-box">
             <img src="https://picsum.photos/300/200?random=6" alt="">
             <div>
@@ -64,8 +67,10 @@
                     Here at BGShop, we're passionate about bringing the best experience to all board game players. Whether you're 
                     a beginner or a seasoned veteran, we're sure you'll find a game to your liking.
                 </p>
+                <button class="btn-yellow">Shop now</button>
             </div>
         </section>
+
         <section id="category-section">
             <h4>Shop by category</h4>
             <div id="categories-grid">
@@ -95,6 +100,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <%- include("../partials/footer")  %>
     <script src="/js/home.js"></script>

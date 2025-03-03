@@ -10,7 +10,14 @@ a {
 }
 
 main {
-    width: 85%;
+    width: 80%;
     margin: auto;
     margin-bottom: 1em;
+}
+
+.btn-yellow {
+    background-color: $yellow;
+    padding: $padding-med;
+    border: none;
+    border-radius: 0.5em;
 }

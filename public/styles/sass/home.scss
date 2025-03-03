@@ -87,7 +87,7 @@ section {
 
 #perks-box {
     padding: $padding-big $padding-med;
-    background-color: $secondary;
+    background-color: $contrast;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -162,7 +162,7 @@ section {
 }
 
 #category-section {
-    background-color: $secondary;
+    background-color: $contrast;
     padding: $padding-small $padding-big;
     text-align: center;
     h4 {
