@@ -128,22 +128,22 @@ function compileSass(sassPath, cssPath) {
     if (!cssPath) cssPath = path.basename(sassPath).split(".")[0] + ".css";
     if (!path.isAbsolute(sassPath)) sassPath = path.join(Global.sassDir, sassPath);
     if (!path.isAbsolute(cssPath)) cssPath = path.join(Global.cssDir, cssPath);
-    resFile = sass.compile(sassPath, {"sourceMap": true, "quietDeps": true, "logger": sass.Logger.silent});
-    fs.writeFileSync(cssPath, resFile.css);
-}
 
-const sassFiles = fs.readdirSync(Global.sassDir);
-for(let file of sassFiles) {
-    if (path.extname(file) == ".scss") compileSass(file);
-}
-
-fs.watch(Global.sassDir, (event, file) => {
-    if (event == "change" || event == "rename") {
-        let fullPath = path.join(Global.sassDir, file);
-        if (fs.existsSync(fullPath)) compileSass(fullPath);
+    // Check timestamps
+    if (fs.existsSync(cssPath)) {
+        const sassStat = fs.statSync(sassPath);
+        const cssStat = fs.statSync(cssPath);
+        if (cssStat.mtime >= sassStat.mtime) {
+            console.log(`Skipping unchanged file: ${sassPath}`);
+            return;
+        }
     }
-});
 
+    // Compile and write CSS
+    resFile = sass.compile(sassPath, { sourceMap: true, quietDeps: true, logger: sass.Logger.silent });
+    fs.writeFileSync(cssPath, resFile.css);
+    console.log(`Compiled: ${sassPath} -> ${cssPath}`);
+}
 
 sequelize.sync()
     .then(() => {
