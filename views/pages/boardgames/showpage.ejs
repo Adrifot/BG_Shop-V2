@@ -12,12 +12,23 @@
         <h5><%= game.name %></h5>
         <p><%= game.description %></p>
         <p><%= game.price %></p>
-        <ul><li><%= game.category %></li></ul>
+        <p><%= game.category %></p>
     </div>
     <a href="/boardgames/<%= game.id %>/edit">Edit</a>
     <a href="/boardgames">Back to all</a>
     <form action="/boardgames/<%= game.id %>?_method=DELETE" method="POST">
         <button>Delete Boardgame</button>
+    </form>
+    <hr>
+    <form action="">
+        <div>
+            <label for="rating">Rating:</label>
+            <input type="range" name="review[rating]" id="rating" min="1" max="5">
+        </div>
+        <div>
+            <label for="review-body">Review</label><br>
+            <textarea name="review[body]" id="review-body" cols="30" rows="3" placeholder="Leave your review here"></textarea>
+        </div>
     </form>
 </body>
 </html>
