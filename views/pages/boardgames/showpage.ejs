@@ -20,7 +20,8 @@
         <button>Delete Boardgame</button>
     </form>
     <hr>
-    <form action="">
+    <h3>Leave a review:</h3>
+    <form action="/boardgames/<%= game.id %>/reviews" method="POST">
         <div>
             <label for="rating">Rating:</label>
             <input type="range" name="review[rating]" id="rating" min="1" max="5">
@@ -29,6 +30,18 @@
             <label for="review-body">Review</label><br>
             <textarea name="review[body]" id="review-body" cols="30" rows="3" placeholder="Leave your review here"></textarea>
         </div>
+        <button>Submit</button>
     </form>
+    <div>
+        <% for (let review of reviews) { %>
+            <hr>
+            <h4><%= review.rating %> stars: </h4>
+            <p><%= review.body %></p> <br>
+            <form action="/boardgames/<%= game.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+                <button>DELETE</button>
+            </form>
+            <hr>
+        <% } %>
+    </div>
 </body>
 </html>
