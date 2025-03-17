@@ -1,13 +1,12 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
 // colors
-$body-bg: #FCFFFC; $white: #FCFFFC;
-$body-color: #1E1E24; $black: #1E1E24;
-$body-light: #383843;  
-$primary: #04724D; $darkGreen: #04724D;
-$secondary: #7AC74F; $lightGreen: #7AC74F;
-$contrast: #6279B8; $blue: #6279B8;
-$contrast-2: #FFC803; $yellow: #FFC803;
+$body-bg: #FFFFFA; $white: $body-bg;
+$body-color: #000103; $black: $body-color;
+$body-light: #1F1F1F; $gray: $body-light;
+$primary: #3C6997; $blue: $primary;
+// $secondary: #7AC74F; $lightGreen: #7AC74F;
+$contrast: #FFA90A; $yellow: $contrast;
 
 // spacing
 $padding-small: 0.2em;
