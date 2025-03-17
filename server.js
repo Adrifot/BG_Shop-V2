@@ -107,11 +107,6 @@ function compileSass(sassPath, cssPath) {
     fs.writeFileSync(cssPath, resFile.css);
 }
 
-const sassFiles = fs.readdirSync(Global.sassDir);
-for(let file of sassFiles) {
-    if(path.extname(file) == ".scss") compileSass(file);
-}
-
 fs.watch(Global.sassDir, (event, file) => {
     if(event == "change" || event == "rename") {
         let fullPath = path.join(Global.sassDir, file);
