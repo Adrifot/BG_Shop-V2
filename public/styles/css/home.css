@@ -11881,7 +11881,7 @@ section {
 #home-carousel {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
   margin: auto;
   overflow: hidden;
 }
@@ -11897,7 +11897,7 @@ section {
 .slide img {
   margin-left: 50%;
   transform: translateX(-50%);
-  height: 100%;
+  width: 1625px;
 }
 
 .active-slide {
@@ -12012,8 +12012,8 @@ section {
 
 #categories-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5em;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
 }
 #categories-grid .category-card {
   width: 100%;
@@ -12023,5 +12023,5 @@ section {
   margin-bottom: 0.5em;
 }
 #categories-grid .category-card h5, #categories-grid .category-card .h5 {
-  text-align: left;
+  text-align: center;
 }
