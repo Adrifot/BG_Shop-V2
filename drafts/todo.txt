@@ -1,2 +1,4 @@
 Form validation:
 Client-side form validation for boardgames and reviews.
+
+package.json stuff
