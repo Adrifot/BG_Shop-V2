@@ -4,6 +4,13 @@ footer {
     background-color: $primary;
     width: 100%;
     padding: $padding-med 0;
+    ul {
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
 }
 
 #footer-content {
@@ -14,9 +21,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     font-size: 1.1em;
-    ul {
-        padding: 0;
-    }
 }
 
 #footer-left, #footer-right, #social-icons {
