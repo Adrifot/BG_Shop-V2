@@ -24,11 +24,6 @@ app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use("/boardgames", bgRouter);
 
-const Global = {
-    sassDir: path.join(__dirname, "public/styles/sass"),
-    cssDir: path.join(__dirname, "public/styles/css")
-};
-
 app.get(["/", "/home"], (req, res) => {
     res.render("pages/home");
 });
@@ -46,32 +41,6 @@ app.use((err, req, res, next) => {
     if (!err.message) err.message = "Oh no, something went wrong!";
     res.status(statusCode).render("pages/error", {err});
 });
-
-function compileSass(sassPath, cssPath) {
-    if (!cssPath) cssPath = path.basename(sassPath).split(".")[0] + ".css";
-    if (!path.isAbsolute(sassPath)) sassPath = path.join(Global.sassDir, sassPath);
-    if (!path.isAbsolute(cssPath)) cssPath = path.join(Global.cssDir, cssPath);
-
-    // Compile Sass and write to file
-    let resFile = sass.compile(sassPath, {"sourceMap": true, "quietDeps": true, "logger": sass.Logger.silent});
-    fs.writeFileSync(cssPath, resFile.css);
-    // console.log(`Compiled: ${sassPath} -> ${cssPath}`);
-}
-
-
-fs.watch(Global.sassDir, (event, file) => {
-    if(event == "change" || event == "rename") {
-        if (file == "custom.scss") {
-            const sassFiles = fs.readdirSync(Global.sassDir);
-            for (let file of sassFiles) {
-                if (path.extname(file) == ".scss") compileSass(file);
-            }
-        }
-        let fullPath = path.join(Global.sassDir, file);
-        if(fs.existsSync(fullPath)) compileSass(file); 
-    }
-});
-
 
 sequelize.sync()
     .then(() => {

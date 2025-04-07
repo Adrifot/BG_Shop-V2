@@ -1,23 +1,27 @@
 {
   "name": "bg_shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "A boardgame shop web application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run server\" \"npm run sass:watch\"",
+    "server": "nodemon server.js",
+    "sass:watch": "sass --watch public/styles/sass:public/styles/css"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adrian Fota",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "concurrently": "^9.1.2",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "method-override": "^3.0.0",
+    "npm": "^11.2.0",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sass": "^1.79.5",
+    "sass": "1.77.6",
     "sequelize": "^6.37.5"
   }
 }
