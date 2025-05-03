@@ -1,6 +1,5 @@
-const { DataTypes } = require("sequelize");
+const {DataTypes} = require("sequelize");
 const sequelize = require("../config/database");
-const Boardgame = require("./boardgame");
 
 const Review = sequelize.define(
     "review",
@@ -12,16 +11,16 @@ const Review = sequelize.define(
         },
 
         body: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
 
         rating: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             validate: {
                 min: 1,
                 max: 5
-            },
-            allowNull: false
+            } 
         }
     },
     {
@@ -29,6 +28,4 @@ const Review = sequelize.define(
     }
 );
 
-Boardgame.hasMany(Review);
-Review.belongsTo(Boardgame);
 module.exports = Review;

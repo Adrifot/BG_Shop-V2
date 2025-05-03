@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const {DataTypes} = require("sequelize");
 const sequelize = require("../config/database");
 
 
@@ -14,17 +14,11 @@ const Boardgame = sequelize.define(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true
-            }
         },
 
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
-            validate: {
-                notEmpty: true
-            }
         },
 
         price: {
@@ -40,23 +34,13 @@ const Boardgame = sequelize.define(
 
         category: {
             type: DataTypes.ENUM("Strategy", "Party", "Card Game", "Classic", "RPG", "Family", "Uncategorized"),
-            allowNull: false
-        },
-
-        tags: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: true,
-            validate: {
-                notEmpty: true
-            }
+            allowNull: false,
+            defaultValue: "Uncategorized"
         },
 
         imagesrc: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true
-            }
         },
 
         stock: {
@@ -67,16 +51,7 @@ const Boardgame = sequelize.define(
             }
         },
 
-        rating: {
-            type: DataTypes.FLOAT,
-            defaultValue: 0,
-            validate: {
-                min: 0,
-                max: 5
-            }
-        },
-
-        minplayers: {
+        minPlayers: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
@@ -84,15 +59,33 @@ const Boardgame = sequelize.define(
             }
         },
 
-        maxplayers: {
+        maxPlayers: {
             type: DataTypes.INTEGER,
             validate: {
-                min: 1
+                min: 1,
+                checkMaxPlayers(value) {
+                    if (value != null  && value < this.min_players)
+                        throw new Error("max_players should be greater than or equal to min_players!")
+                }
             }
         },
 
-        playtime: {
-            type: DataTypes.INTEGER
+        minPlaytime: {
+            type: DataTypes.INTEGER,
+            validate: {
+                min: 0
+            }
+        },
+
+        maxPlaytime: {
+            type: DataTypes.INTEGER,
+            validate: {
+                min: 0,
+                checkMaxPlaytime(value) {
+                    if (this.min_playtime !== null && value !== null && value <= this.min_playtime) 
+                        throw new Error("max_playtime must be greater than min_playtime");
+                }
+            }
         },
 
         age: {
@@ -100,25 +93,11 @@ const Boardgame = sequelize.define(
             allowNull: false
         },
 
-        designer: {
-            type: DataTypes.STRING
-        },
-
-        publisher: {
-            type: DataTypes.STRING
-        },
-
-        releaseyear: {
+        releaseYear: {
             type: DataTypes.INTEGER
         },
 
-        isavailable: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
-            allowNull: false
-        },
-
-        isexpansion: {
+        isExpansion: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: false

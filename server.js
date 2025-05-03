@@ -10,6 +10,8 @@ const ExpressError = require("./utilities/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 
+require("./models/refs");
+
 const app = express();
 
 const PORT = 3030;
@@ -42,9 +44,10 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("pages/error", {err});
 });
 
-sequelize.sync()
+sequelize.sync({alter: true})
     .then(() => {
         app.listen(PORT, () => {
+            console,log("Database synced.");
             console.log(`Server started on port ${PORT}`);
         });
     })
