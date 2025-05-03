@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run sass:watch\"",
     "server": "nodemon server.js",
-    "sass:watch": "sass --watch public/styles/sass:public/styles/css"
+    "sass:watch": "sass --watch public/styles/sass:public/styles/css",
+    "dbreset": "node seeds/dbReset.js"
   },
   "keywords": [],
   "author": "Adrian Fota",
