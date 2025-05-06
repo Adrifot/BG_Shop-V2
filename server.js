@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 
 const sequelize = require("./config/database")
 
-const ExpressError = require("./utilities/expressError");
+const ExpressError = require("./utils/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 
@@ -47,7 +47,7 @@ app.use((err, req, res, next) => {
 sequelize.sync({alter: true})
     .then(() => {
         app.listen(PORT, () => {
-            console,log("Database synced.");
+            console.log("Database synced.");
             console.log(`Server started on port ${PORT}`);
         });
     })
