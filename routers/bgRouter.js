@@ -1,13 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-const asyncHandler = require("../utilities/asyncHandler");
-const ExpressError = require("../utilities/expressError");
+const asyncHandler = require("../utils/asyncHandler");
+const ExpressError = require("../utils/expressError");
 
 const Boardgame = require("../models/boardgame");
 const Review = require("../models/review");
 
 const BGCategories = ["Strategy", "Party", "Card Game", "Classic", "RPG", "Family", "Uncategorized"];
+
+const bgIncludeArr = [
+    {association: "designer", attributes: ["name", "id"]},
+    {association: "publisher", attributes: ["name", "id"]},
+    {association: "tags", attributes: ["tagname", "id"]},
+    {model: Review, include: {association: "user", attributes: ["id", "username", "profilepic"]}}
+];
 
 router.get("/", asyncHandler(async (req, res) => {
     const boardgames = await Boardgame.findAll();
@@ -19,14 +26,17 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/:id", asyncHandler(async (req, res, next) => {
-        const game = await Boardgame.findByPk(req.params.id);
+        const game = await Boardgame.findByPk(req.params.id, {
+            include: bgIncludeArr
+        });
         if (!game) throw new ExpressError("Boardgame not found", 404);
-        const reviews = await Review.findAll({where: {boardgameId: game.id}});
-        res.render("pages/boardgames/showpage", {game, reviews});
+        res.render("pages/boardgames/showpage", {game});
 }));
 
 router.get("/:id/edit", asyncHandler(async (req, res, next) => {
-    const game = await Boardgame.findByPk(req.params.id);
+    const game = await Boardgame.findByPk(req.params.id, {
+        include: bgIncludeArr
+    });
     if (!game) throw new ExpressError("Boardgame not found", 404);
     res.render("pages/boardgames/edit", {game, BGCategories});
 }));
@@ -61,7 +71,8 @@ router.put("/:id", asyncHandler(async (req, res, next) => {
 
 router.delete("/:id", asyncHandler(async (req, res, next) => {
     const game = await Boardgame.findByPk(req.params.id);
-    await Review.destroy({where: {boardgameId: game.id}});
+    await Review.destroy({where: {boardgameId: game.id}}); // perhaps optional with ON DELETE: CASCADE
+    await game.setTags([]);
     await game.destroy();
     res.redirect("/boardgames");
 }));
@@ -82,7 +93,8 @@ router.post("/:id/reviews", asyncHandler(async (req, res, next) => {
 
 router.delete("/:id/reviews/:reviewId", asyncHandler(async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId);
-    review.destroy();
+    if (!review) throw new ExpressError("Review not found", 404);
+    await review.destroy();
     res.redirect(`/boardgames/${req.params.id}`);
 }));
 

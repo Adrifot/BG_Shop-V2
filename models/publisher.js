@@ -19,10 +19,6 @@ const Publisher = sequelize.define(
             type: DataTypes.STRING
         },
 
-        foundedYear: {
-            type: DataTypes.INTEGER,
-        },
-
         website: {
             type: DataTypes.STRING
         }

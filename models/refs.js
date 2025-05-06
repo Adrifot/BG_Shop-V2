@@ -1,17 +1,18 @@
-const Boardgame = require("./models/boardgame");
-const Designer = require("./models/designer");
-const Publisher = require("./models/publisher");
-const Tag = require("./models/tag");
-const User = require("./models/user");
-const Review = require("./models/review");
-const BoardgameTag = require("./models/boardgame_tags");
+const Boardgame = require("./boardgame");
+const Designer = require("./designer");
+const Publisher = require("./publisher");
+const Tag = require("./tag");
+const User = require("./user");
+const Review = require("./review");
+const BoardgameTag = require("./boardgame_tags");
 
 Boardgame.belongsTo(Designer, { foreignKey: "designerId" });
 Boardgame.belongsTo(Publisher, { foreignKey: "publisherId" });
 Boardgame.hasMany(Review, { foreignKey: "boardgameId" });
 Boardgame.belongsToMany(Tag, {
   through: BoardgameTag,
-  foreignKey: "boardgame_id"
+  foreignKey: "boardgame_id",
+  as: "tags"
 });
 
 Designer.hasMany(Boardgame, { foreignKey: "designerId" });
@@ -20,7 +21,8 @@ Publisher.hasMany(Boardgame, { foreignKey: "publisherId" });
 
 Tag.belongsToMany(Boardgame, {
   through: BoardgameTag,
-  foreignKey: "tag_id"
+  foreignKey: "tagId",
+  as: "boardgames"
 });
 
 User.hasMany(Review, { foreignKey: "userId" });
