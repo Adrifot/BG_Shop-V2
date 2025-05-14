@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run sass:watch\"",
     "server": "nodemon server.js",
-    "sass:watch": "sass --watch public/styles/sass:public/styles/css"
+    "sass:watch": "sass --watch public/styles/sass:public/styles/css",
+    "seedbg": "node ./seeds/bgSeed.js"
   },
   "keywords": [],
   "author": "Adrian Fota",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "concurrently": "^9.1.2",

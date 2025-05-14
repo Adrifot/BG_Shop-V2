@@ -10,8 +10,6 @@ const ExpressError = require("./utils/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 
-require("./models/refs");
-
 const app = express();
 
 const PORT = 3030;

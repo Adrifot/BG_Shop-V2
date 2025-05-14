@@ -4,8 +4,7 @@ const router = express.Router();
 const asyncHandler = require("../utils/asyncHandler");
 const ExpressError = require("../utils/expressError");
 
-const Boardgame = require("../models/boardgame");
-const Review = require("../models/review");
+const {Boardgame, Review} = require("../models");
 
 const BGCategories = ["Strategy", "Party", "Card Game", "Classic", "RPG", "Family", "Uncategorized"];
 
