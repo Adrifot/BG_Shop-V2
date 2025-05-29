@@ -3,6 +3,8 @@ const sequelize = require("../config/database");
 
 const { Boardgame, Designer, Publisher } = require("../models");
 
+require("../models/refs");
+
 const seedFakeData = async (count = 10) => {
     try {
         await sequelize.sync({ force: true });
@@ -34,8 +36,8 @@ const seedFakeData = async (count = 10) => {
                 age: faker.number.int({ min: 6, max: 18 , multipleOf: 2}),
                 releaseYear: faker.number.int({ min: 1970, max: 2024 }),
                 isExpansion: faker.datatype.boolean(),
-                designerId: faker.helpers.arrayElement([...designers.map(d => d.id), null]),
-                publisherId: faker.helpers.arrayElement([...publishers.map(p => p.id), null])
+                designerId: faker.helpers.arrayElement([...designers.map(d => d.id)]),
+                publisherId: faker.helpers.arrayElement([...publishers.map(p => p.id)])
             }))
         );
         
@@ -47,6 +49,4 @@ const seedFakeData = async (count = 10) => {
     }
 };
 
-if (require.main === module) {
-    seedFakeData(15);
-}
+seedFakeData(15);
