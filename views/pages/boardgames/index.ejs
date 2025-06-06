@@ -16,9 +16,9 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= boardgame.name %></h5>
                         <div class="card-text">
-                            <p><%= boardgame.description %></p>
                             <p>$<%= boardgame.price %></p>
                             <p><%= boardgame.category %></p>
+                            <p><%= boardgame.publisher.name %></p>
                             <p><a href="/boardgames/<%= boardgame.id %>">View</a></p>
                         </div>
                     </div>

@@ -12,11 +12,14 @@ const bgIncludeArr = [
     {association: "designer", attributes: ["name", "id"]},
     {association: "publisher", attributes: ["name", "id"]},
     {association: "tags", attributes: ["tagname", "id"]},
-    {model: Review, include: {association: "user", attributes: ["id", "username", "profilepic"]}}
 ];
 
+const reviewModelObj = {model: Review, include: {association: "user", attributes: ["id", "username", "profilepic"]}};
+
 router.get("/", asyncHandler(async (req, res) => {
-    const boardgames = await Boardgame.findAll();
+    const boardgames = await Boardgame.findAll({
+        include: bgIncludeArr
+    });
     res.render("pages/boardgames/index", {boardgames});
 }));
 
@@ -26,7 +29,7 @@ router.get("/new", (req, res) => {
 
 router.get("/:id", asyncHandler(async (req, res, next) => {
         const game = await Boardgame.findByPk(req.params.id, {
-            include: bgIncludeArr
+            include:[...bgIncludeArr, reviewModelObj]
         });
         if (!game) throw new ExpressError("Boardgame not found", 404);
         res.render("pages/boardgames/showpage", {game});
