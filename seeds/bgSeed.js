@@ -27,7 +27,7 @@ const seedFakeData = async (count = 10) => {
                 description: faker.lorem.paragraph(),
                 price: faker.number.float({ min: 10, max: 100, fractionDigits: 2 }),
                 category: faker.helpers.arrayElement(["Strategy", "Party", "Card Game", "Classic", "RPG", "Family"]),
-                imagesrc: faker.image.urlLoremFlickr({ category: 'boardgame' }),
+                imagesrc: `https://picsum.photos/300/200?random=${Math.random()}`,
                 stock: faker.number.int({ min: 0, max: 50 }),
                 minPlayers: faker.number.int({ min: 1, max: 4 }),
                 maxPlayers: faker.number.int({ min: 2, max: 8 }),
