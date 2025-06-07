@@ -9,6 +9,7 @@ const sequelize = require("./config/database")
 const ExpressError = require("./utils/expressError");
 
 const bgRouter = require("./routers/bgRouter");
+const reviewRouter = require("./routers/reviewRouter");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use("/boardgames", bgRouter);
+app.use("/boardgames/:id/reviews", reviewRouter);
 
 app.get(["/", "/home"], (req, res) => {
     res.render("pages/home");
