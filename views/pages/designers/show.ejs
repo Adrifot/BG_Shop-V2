@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOW PAGE FOR DESIGNER</title>
+</head>
+<body>
+    <h1><%= designer.name %></h1> // REMINDER: to add link to boardgame
+    <% for (let bg of designer.boardgames) { %>
+        <p><%= bg.name %></p>
+    <% } %>
+</body>
+</html>
