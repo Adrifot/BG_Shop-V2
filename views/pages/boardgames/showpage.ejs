@@ -17,7 +17,15 @@
         <p>Playtime: <%= game.minPlaytime %> - <%= game.maxPlaytime %> min</p>
         <p><%= game.age %>+</p>
         <p><%= game.releaseYear %></p>
-        <p>Published by <%= game.publisher.name %> and designed by <%= game.designer.name %>.</p>
+        <p>
+            Designed by 
+            <%= game.creators
+                .filter(c => c.type === "designer")
+                .map(c => c.name)
+                .join(", ") %> 
+            and published by 
+            <%= game.creators.find(c => c.type === "publisher")?.name || "Unknown" %>
+        </p>
         <% if (game.isExpansion) { %>
             <p>This item is a game expansion. You need the base game in order to play it.</p>
         <% } %>

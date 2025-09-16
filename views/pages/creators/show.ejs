@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/css/temp.css"> 
+    <title><%= creator.name %></title>
+</head>
+<body>
+    <h1><%= creator.name %><%= creator.country ? ` - ${creator.country}` : "" %></h1>
+    <a href="/creators">Back to all</a>
+    <div class="temp-container">
+        <p><a href="/creators/<%= creator.id %>/edit">Edit</a></p>
+    </div>
+    <h2><%= creator.type == "publisher" ? "Published " : "Designed " %> games:</h2>
+    <% for (let bg of creator.boardgames) { %>
+        <div class="temp-container">
+            <p><%= bg.name %></p>
+            <p><%= bg.description %></p>
+            <p><a href="/boardgames/<%= bg.id %>">View</a></p>
+        </div>
+    <% } %>
+</body>
+</html>

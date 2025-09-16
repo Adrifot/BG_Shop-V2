@@ -10,6 +10,7 @@ const ExpressError = require("./utils/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 const reviewRouter = require("./routers/reviewRouter");
+const creatorRouter = require("./routers/creatorRouter");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use("/boardgames", bgRouter);
 app.use("/boardgames/:id/reviews", reviewRouter);
+app.use("/creators", creatorRouter);
 
 app.get(["/", "/home"], (req, res) => {
     res.render("pages/home");

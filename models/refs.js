@@ -1,29 +1,34 @@
 const Boardgame = require("./boardgame");
-const Designer = require("./designer");
-const Publisher = require("./publisher");
+const Creator = require("./creator");
 const Tag = require("./tag");
 const User = require("./user");
 const Review = require("./review");
 const BoardgameTag = require("./boardgame_tags");
+const BoardgameCreator = require("./boardgame_creators");
 
-Boardgame.belongsTo(Designer, { foreignKey: { name: "designerId" } });
-Boardgame.belongsTo(Publisher, { foreignKey: { name: "publisherId" } });
 Boardgame.hasMany(Review, { foreignKey: { name: "boardgameId", allowNull: false } });
 Boardgame.belongsToMany(Tag, {
   through: BoardgameTag,
-  foreignKey: { name: "boardgame_id", allowNull: false },
+  foreignKey: { name: "boardgameId", allowNull: false },
   as: "tags"
 });
-
-Designer.hasMany(Boardgame, { foreignKey: { name: "designerId" } });
-
-Publisher.hasMany(Boardgame, { foreignKey: { name: "publisherId" } });
+Boardgame.belongsToMany(Creator, {
+  through: BoardgameCreator,
+  foreignKey: {name: "boardgameId", allowNull: false},
+  as: "creators"
+});
 
 Tag.belongsToMany(Boardgame, {
   through: BoardgameTag,
   foreignKey: { name: "tagId", allowNull: false },
   as: "boardgames"
 });
+
+Creator.belongsToMany(Boardgame, {
+  through: BoardgameCreator,
+  foreignKey: {name: "creatorId", allowNull: false},
+  as: "boardgames"
+})
 
 User.hasMany(Review, { foreignKey: { name: "userId", allowNull: false } });
 

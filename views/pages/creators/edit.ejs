@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Edit creator</title>
+</head>
+<body>
+    <h1>Edit creator</h1>
+    <form action="/creators/<%= creator.id %>?_method=PUT" method="POST">
+        <div>
+            <label for="name">creator name</label>
+            <input type="text" id="name" name="creator[name]" value="<%= creator.name %>" required>
+        </div>
+        <div>
+            <label for="country">creator country</label>
+            <input type="text" id="country" name="creator[country]" value="<%= creator.country %>">
+        </div>
+        <div>
+            <select name="creator[type]" id="type">
+                <option value="designer" <%= creator.type == "designer" ? "selected" : "" %>>Designer</option>
+                <option value="publisher" <%= creator.type == "publisher" ? "selected" : "" %>>Publisher</option>
+            </select>
+        </div>
+        <button>Submit</button>
+    </form>
+    <a href="/creators/<%= creator.id %>">Cancel</a>
+</body>
+</html>
