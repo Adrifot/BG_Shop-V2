@@ -4,13 +4,12 @@ const router = express.Router();
 const asyncHandler = require("../utils/asyncHandler");
 const ExpressError = require("../utils/expressError");
 
-const {Boardgame, Review, Designer, Publisher} = require("../models");
+const {Boardgame, Review, Creator} = require("../models");
 
 const BGCategories = ["Strategy", "Party", "Card Game", "Classic", "RPG", "Family", "Uncategorized"];
 
 const bgIncludeArr = [
-    {model: Designer, attributes: ["name", "id"]},
-    {model: Publisher, attributes: ["name", "id"]},
+    {model: Creator, as: "creators", attributes: ["name", "id", "type"]},
     {association: "tags", attributes: ["tagname", "id"]},
 ];
 

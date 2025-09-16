@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Add New Creator</title>
+</head>
+<body>
+    <h1>New creator</h1>
+    <form action="/creators" method="POST">
+        <div>
+            <label for="name">Creator name</label>
+            <input type="text" id="name" name="creator[name]" required>
+        </div>
+        <div>
+            <label for="country">Creator country</label>
+            <input type="text" id="country" name="creator[country]">
+        </div>
+        <div>
+            <label for="type">Role</label>
+            <select name="creator[type]" id="type">
+                <option value="designer">Designer</option>
+                <option value="publisher">Publisher</option>
+            </select>
+        </div>
+        <button>Submit</button>
+    </form>
+    <a href="/creators">Cancel</a>
+</body>
+</html>
