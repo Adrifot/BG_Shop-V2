@@ -57,4 +57,10 @@ router.put("/:id", asyncHandler(async (req, res, next) => {
     }
 }));
 
+router.delete("/:id", asyncHandler(async (req, res) => {
+    const creator = await Creator.findByPk(req.params.id);
+    await creator.destroy();
+    res.redirect("/creators");
+}));
+
 module.exports = router;

@@ -20,5 +20,8 @@
             <p><a href="/boardgames/<%= bg.id %>">View</a></p>
         </div>
     <% } %>
+    <form action="/creators/<%= creator.id %>?_method=DELETE" method="POST">
+        <button>Delete Creator</button>
+    </form>
 </body>
 </html>
