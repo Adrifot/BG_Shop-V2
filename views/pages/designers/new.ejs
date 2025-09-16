@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>Add New Designer</title>
+</head>
+<body>
+    <h1>New designer</h1>
+    <form action="/designers" method="POST">
+        <div>
+            <label for="name">Designer name</label>
+            <input type="text" id="name" name="designer[name]"required>
+        </div>
+        <div>
+            <label for="country">Designer country</label>
+            <input type="text" id="country" name="designer[country]"">
+        </div>
+        <button>Submit</button>
+    </form>
+    <a href="/designers">Cancel</a>
+</body>
+</html>
