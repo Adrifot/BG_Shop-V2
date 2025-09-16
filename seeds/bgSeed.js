@@ -11,7 +11,7 @@ const seedFakeData = async (count = 10) => {
 
     const creators = await Creator.bulkCreate(
         Array(10).fill().map(() => {
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.65) {
                 return { name: faker.person.fullName(), type: "designer" };
             } else {
                 return { name: faker.company.name(), type: "publisher" };
