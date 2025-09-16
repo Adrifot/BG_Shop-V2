@@ -28,8 +28,9 @@
         <button>Delete Boardgame</button>
     </form>
     <hr>
-    <h3>Leave a review:</h3>
-    <form action="/boardgames/<%= game.id %>/reviews" method="POST">
+    <!-- <h3>Leave a review:</h3> -->
+    
+    <!-- <form action="/boardgames/<%= //game.id %>/reviews" method="POST">
         <div>
             <label for="rating">Rating:</label>
             <input type="range" name="review[rating]" id="rating" min="1" max="5">
@@ -39,7 +40,7 @@
             <textarea name="review[body]" id="review-body" cols="30" rows="3" placeholder="Leave your review here"></textarea>
         </div>
         <button>Submit</button>
-    </form>
+    </form> -->
     <div>
         
         <% for (let review of (game.Reviews ?? [])) { %>
