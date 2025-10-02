@@ -22,9 +22,12 @@ router.get("/", asyncHandler(async (req, res) => {
     res.render("pages/boardgames/index", {boardgames});
 }));
 
-router.get("/new", (req, res) => {
-    res.render("pages/boardgames/new", {BGCategories});
-});
+router.get("/new", asyncHandler(async (req, res) => {
+    const allCreators = await Creator.findAll();
+    const allPublishers = allCreators.filter(c => c.type == "publisher");
+    const allDesigners = allCreators.filter(c => c.type == "designer");
+    res.render("pages/boardgames/new", {BGCategories, allPublishers, allDesigners});
+}));
 
 router.get("/:id", asyncHandler(async (req, res, next) => {
         const game = await Boardgame.findByPk(req.params.id, {
@@ -35,17 +38,22 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
 }));
 
 router.get("/:id/edit", asyncHandler(async (req, res, next) => {
+    const allCreators = await Creator.findAll();
+    const allPublishers = allCreators.filter(c => c.type == "publisher");
+    const allDesigners = allCreators.filter(c => c.type == "designer");
     const game = await Boardgame.findByPk(req.params.id, {
         include: bgIncludeArr
     });
     if (!game) throw new ExpressError("Boardgame not found", 404);
-    res.render("pages/boardgames/edit", {game, BGCategories});
+    res.render("pages/boardgames/edit", {game, BGCategories, allPublishers, allDesigners});
 }));
 
 router.post("/", asyncHandler(async (req, res, next) => {
-    if (!req.body.boardgame) throw new ExpressError("Invalid data", 400);
+    if (!req.body.boardgame || !req.body.publisherId || !req.body.designerIds) throw new ExpressError("Invalid data", 400);
     try {
         const newGame = await Boardgame.create(req.body.boardgame);
+        await newGame.addCreator(req.body.publisherId);
+        for (const id of req.body.designerIds) newGame.addCreator(id);
         res.redirect(`/boardgames/${newGame.id}`);
     } catch(err) {
         if (err.name === "SequelizeValidationError") {

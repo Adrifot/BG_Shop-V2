@@ -24,6 +24,7 @@
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sass": "1.77.6",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "tom-select": "^2.4.3"
   }
 }

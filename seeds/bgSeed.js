@@ -48,13 +48,10 @@ const seedFakeData = async (count = 10) => {
     for (const game of boardgames) {
         const publishers = creators.filter(c => c.type === "publisher");
         const designers = creators.filter(c => c.type === "designer");
-
         const publisher = faker.helpers.arrayElement(publishers);
         const chosenDesigners = faker.helpers.arrayElements(designers, faker.number.int({ min: 1, max: 3 }));
-
         await game.addCreators([publisher, ...chosenDesigners]);
     }
-
     console.log(`Generated ${count} fake boardgames with ${creators.length} creators.`);
   } catch (error) {
     console.error("Error seeding data:", error);

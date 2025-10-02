@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include("../../partials/head") %>
+    <%- include("../../partials/tomselect") %>
     <title>Edit Boardgame</title>
 </head>
 <body>
@@ -49,9 +50,44 @@
                 <label for="age">Age:</label>
                 <input type="number" step="1" id="age" name="boardgame[age]" value="<%= game.age %>">
             </div>
+            <div>
+                <label for="publisher">Publisher:</label>
+                <select name="publisherId" id="publisher" placeholder="Select a publisher...">
+                    <option value="">Select a publisher...</option>
+                     <% for (let publisher of allPublishers) { %>
+                        <option value="<%= publisher.id %>" <%= game.creators.some(c => c.id == publisher.id) ? "selected" : "" %>>
+                            <%= publisher.name %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+            <div>
+                <label for="designer">Designer(s):</label>
+                <select name="designerIds[]" id="designer" placeholder="Select designers (max 3)" multiple>
+                    <option value="">Select designers (max 3)</option>
+                    <% for(let designer of allDesigners) { %>
+                        <option value="<%= designer.id %>" <%=game.creators.some(c => c.id == designer.id) ? "selected" : "" %>>
+                             <%= designer.name %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
             <button>Submit</button>
         </form>
         <a href="/boardgames/<%= game.id %>">Cancel</a>
     </div>
+    <script>
+        new TomSelect("#publisher", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            }
+        });
+
+        new TomSelect("#designer", {
+            maxItems: 3
+        });
+    </script>
 </body>
 </html>
