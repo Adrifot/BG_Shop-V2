@@ -7,10 +7,10 @@ const asyncHandler = require("../utils/asyncHandler");
 passport.use(
     new LocalStrategy(asyncHandler(async (username, password, done) => {
         try {
-            const user = await User.findOne({
-                where: {username}
-            });
-            if (!user || user.pswdhash !== password) throw new Error("Wrong credentials.");
+            const user = await User.findOne({ where: { username } });
+            if (!user) throw new Error("Wrong credentials.");
+            const valid = await user.validatePassword(password);
+            if (!valid) throw new Error("Wrong credentials.");
             done(null, user);
         } catch (err) {
             done(err, null);
