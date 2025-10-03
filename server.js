@@ -1,7 +1,5 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
-const sass = require("sass");
 const methodOverride = require("method-override");
 
 const sequelize = require("./config/database")
@@ -32,6 +30,10 @@ app.get(["/", "/home"], (req, res) => {
 
 app.get("/admin", (req, res) => {
     res.render("pages/adminpage");
+});
+
+app.get("/login", (req, res) => {
+    res.render("pages/login");
 });
 
 app.all("*", (req, res, next) => {
