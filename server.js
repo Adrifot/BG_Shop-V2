@@ -5,13 +5,18 @@ const sass = require("sass");
 const methodOverride = require("method-override");
 
 const sequelize = require("./config/database")
+const passport = require("passport");
+const session = require("express-session");
 
 const ExpressError = require("./utils/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 const reviewRouter = require("./routers/reviewRouter");
+const authRouter = require("./routers/authRouter");
 
 const app = express();
+
+require("./auth/localStrategy");
 
 const PORT = 3030;
 
@@ -19,12 +24,28 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
+app.use(
+    session({
+        secret: "tobechangedlater",
+        saveUninitialized: false,
+        resave: false,
+        cookie: {
+            httpOnly: true,
+            maxAge: 2 * 24 * 60 * 60 * 1000
+        }
+    })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use("/boardgames", bgRouter);
 app.use("/boardgames/:id/reviews", reviewRouter);
+app.use("/", authRouter);
 
 app.get(["/", "/home"], (req, res) => {
     res.render("pages/home");
