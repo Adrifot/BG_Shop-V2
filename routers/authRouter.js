@@ -21,7 +21,7 @@ router.post('/login',
 
 router.post("/register", asyncHandler(async (req, res, next) => {
     const newUser = req.body.newuser;
-    newUser.pswdhash = newUser.password; // temporary, used for testing only
+    newUser.pswdhash = newUser.password;
 
     const existingUser = await User.findOne({ where: { username: newUser.username } });
     if (existingUser) {
