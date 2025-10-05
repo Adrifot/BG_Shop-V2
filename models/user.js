@@ -1,5 +1,8 @@
 const {DataTypes} = require("sequelize");
 const sequelize = require("../config/database");
+const bcrypt = require("bcrypt");
+
+const SALT_ROUNDS = 10
 
 const User = sequelize.define(
     "user", 
@@ -54,8 +57,26 @@ const User = sequelize.define(
         }
     },
     {
-        timestamps: true
+        timestamps: true,
+        hooks: {
+            beforeCreate: async (user) => {
+                if (user.pswdhash) user.pswdhash = await bcrypt.hash(user.pswdhash, SALT_ROUNDS);
+            },
+            beforeUpdate: async (user) => {
+                if (user.changed("pswdhash")) user.pswdhash = await bcrypt.hash(user.pswdhash, SALT_ROUNDS);
+            }
+        }
     }
 );
+
+User.prototype.validatePassword = function(password) {
+    return bcrypt.compare(password, this.pswdhash);
+}
+
+User.register = async function({username, password, email}) {
+    const existingUser = await User.findOne({ where: {username} });
+    if (existingUser) throw new ExpressError("Username already taken", 400);
+    return User.create({username, pswdhash: password, email});
+}
 
 module.exports = User;

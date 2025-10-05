@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include("../../partials/head") %>
+    <%- include("../../partials/tomselect") %>
     <title>Add new Boardgame</title>
 </head>
 <body>
@@ -40,18 +41,49 @@
                 <label for="players">Players:</label>
                 <div id="players">
                     <label for="minplayers">Min:</label>
-                    <input type="number" step="1" min="1" id="minplayers" name="boardgame[minplayers]">
+                    <input type="number" step="1" min="1" id="minplayers" name="boardgame[minPlayers]">
                     <label for="maxplayers">Max:</label>
-                    <input type="number" step="1" min="1" id="maxplayers" name="boardgame[maxplayers]">
+                    <input type="number" step="1" min="1" id="maxplayers" name="boardgame[maxPlayers]">
                 </div>
             </div>
             <div>
                 <label for="age">Age:</label>
                 <input type="number" step="1" id="age" name="boardgame[age]">
             </div>
+            <div>
+                <label for="publisher">Publisher:</label>
+                <select name="publisherId" id="publisher" placeholder="Select a publisher...">
+                    <option value="">Select a publisher...</option>
+                    <% for(let publisher of allPublishers) { %>
+                        <option value="<%= publisher.id %>"><%= publisher.name %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div>
+                <label for="designer">Designer(s):</label>
+                <select name="designerIds[]" id="designer" placeholder="Select designers (max 3)" multiple>
+                    <option value="">Select designers (max 3)</option>
+                    <% for(let designer of allDesigners) { %>
+                        <option value="<%= designer.id %>"><%= designer.name %></option>
+                    <% } %>
+                </select>
+            </div>
             <button>Submit</button>
         </form>
         <a href="/boardgames">Cancel</a>
     </div>
+    <script>
+        new TomSelect("#publisher", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            }
+        });
+
+        new TomSelect("#designer", {
+            maxItems: 3
+        });
+    </script>
 </body>
 </html>

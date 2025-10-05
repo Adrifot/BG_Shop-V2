@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head") %>
+    <title>All Creators</title>
+</head>
+<body>
+    <h1>All Creators</h1>
+    <a href="/creators/new">Make new creator</a>
+    <% for (let creator of creators) { %>
+        <div class="card mb-3">
+            <div class="row">
+                <p> <%= creator.name %> </p>
+                <% if (creator.country) { %>
+                    <p> <%= creator.country %> </p>
+                <% } %>
+                <p><a href="/creators/<%= creator.id %>">View</a></p>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>

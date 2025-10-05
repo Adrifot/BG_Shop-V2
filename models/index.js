@@ -1,19 +1,19 @@
 const Boardgame = require("./boardgame");
-const Designer = require("./designer");
-const Publisher = require("./publisher");
+const Creator = require("./creator");
 const Tag = require("./tag");
 const User = require("./user");
 const Review = require("./review");
 const BoardgameTag = require("./boardgame_tags");
+const BoardgameCreator = require("./boardgame_creators");
 
 require("./refs");
 
 module.exports = {
   Boardgame,
-  Designer,
-  Publisher,
+  Creator,
   Tag,
   User,
   Review,
-  BoardgameTag
+  BoardgameTag,
+  BoardgameCreator
 };

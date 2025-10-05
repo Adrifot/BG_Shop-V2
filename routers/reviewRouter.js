@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router({mergeParams: true});
 
-const asyncHandler = require("../utils/asyncHandler");
-const ExpressError = require("../utils/expressError");
+const asyncHandler = require("../middleware/asyncHandler");
+const ExpressError = require("../errors/expressError");
 
 const {Boardgame, Review} = require("../models");
 
