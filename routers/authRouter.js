@@ -12,14 +12,11 @@ router.get("/register", (req, res) => {
     res.render("pages/register");
 });
 
-router.post('/login', 
-    passport.authenticate('local', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-);
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (req, res) => {
+    res.redirect('/');
+});
 
-router.post("/register", asyncHandler(async (req, res, next) => {
+router.post("/register", asyncHandler(async (req, res) => {
     await User.register(req.body.newuser);
     res.redirect("/login");
 }));
