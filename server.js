@@ -8,7 +8,7 @@ const sequelize = require("./config/database")
 const passport = require("passport");
 const session = require("express-session");
 
-const ExpressError = require("./utils/expressError");
+const ExpressError = require("./errors/expressError");
 
 const bgRouter = require("./routers/bgRouter");
 const reviewRouter = require("./routers/reviewRouter");

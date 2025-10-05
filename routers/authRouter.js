@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user");
-const asyncHandler = require("../utils/asyncHandler");
+const asyncHandler = require("../middleware/asyncHandler");
 
 router.get("/login", (req, res) => {
-    res.render("pages/login");
+    res.render("pages/users/login");
 });
 
 router.get("/register", (req, res) => {
-    res.render("pages/register");
+    res.render("pages/users/register");
 });
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (req, res) => {

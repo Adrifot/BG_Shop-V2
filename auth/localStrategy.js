@@ -1,7 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("../models/user");
-const asyncHandler = require("../utils/asyncHandler");
+const asyncHandler = require("../middleware/asyncHandler");
 
 passport.use(
     new LocalStrategy(asyncHandler(async (username, password, done) => {
