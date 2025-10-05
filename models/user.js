@@ -74,7 +74,7 @@ User.prototype.validatePassword = function(password) {
 }
 
 User.register = async function({username, password, email}) {
-    const existingUser = await User.findOne({ where: username });
+    const existingUser = await User.findOne({ where: {username} });
     if (existingUser) throw new ExpressError("Username already taken", 400);
     return User.create({username, pswdhash: password, email});
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const asyncHandler = require("../middleware/asyncHandler");
+const needLogin = require("../middleware/loginCheck");
 const ExpressError = require("../errors/expressError");
 
 const {Boardgame, Review, Creator} = require("../models");
@@ -22,7 +23,7 @@ router.get("/", asyncHandler(async (req, res) => {
     res.render("pages/boardgames/index", {boardgames});
 }));
 
-router.get("/new", asyncHandler(async (req, res) => {
+router.get("/new", needLogin, asyncHandler(async (req, res) => {
     const allCreators = await Creator.findAll();
     const allPublishers = allCreators.filter(c => c.type == "publisher");
     const allDesigners = allCreators.filter(c => c.type == "designer");
