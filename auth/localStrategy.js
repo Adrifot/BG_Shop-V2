@@ -1,7 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("../models/user");
-const ExpressError = require("../utils/expressError");
 const asyncHandler = require("../utils/asyncHandler");
 
 passport.use(

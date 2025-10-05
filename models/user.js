@@ -73,4 +73,10 @@ User.prototype.validatePassword = function(password) {
     return bcrypt.compare(password, this.pswdhash);
 }
 
+User.register = async function({username, password, email}) {
+    const existingUser = await User.findOne({ where: username });
+    if (existingUser) throw new ExpressError("Username already taken", 400);
+    return User.create({username, pswdhash: password, email});
+}
+
 module.exports = User;

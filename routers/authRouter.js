@@ -20,19 +20,8 @@ router.post('/login',
 );
 
 router.post("/register", asyncHandler(async (req, res, next) => {
-    const newUser = req.body.newuser;
-    newUser.pswdhash = newUser.password;
-
-    const existingUser = await User.findOne({ where: { username: newUser.username } });
-    if (existingUser) {
-        throw new ExpressError("Username already taken", 400);
-    }
-
-    const user = await User.create(newUser);
-    req.login(user, (err) => {
-        if (err) return next(err);
-        res.redirect("/");
-    });
+    await User.register(req.body.newuser);
+    res.redirect("/login");
 }));
 
 module.exports = router;
