@@ -43,6 +43,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 app.use("/boardgames", bgRouter);
 app.use("/boardgames/:id/reviews", reviewRouter);
 app.use("/creators", creatorRouter);
@@ -54,10 +59,6 @@ app.get(["/", "/home"], (req, res) => {
 
 app.get("/admin", (req, res) => {
     res.render("pages/adminpage");
-});
-
-app.get("/login", (req, res) => {
-    res.render("pages/login");
 });
 
 app.all("*", (req, res, next) => {

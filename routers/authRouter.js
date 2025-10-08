@@ -17,11 +17,16 @@ router.get("/login", (req, res) => {
     res.render("pages/users/login");
 });
 
-router.post("/login", 
-    passport.authenticate("local", { failureRedirect: "login" }), 
-        (req, res) => {
-            res.redirect("/");
-        }
+router.post("/login",
+    passport.authenticate("local", { 
+        failureRedirect: "/login",
+        keepSessionInfo: true 
+    }),
+    (req, res, next) => {
+        const redirectUrl = req.session.returnTo || "/";
+        delete req.session.returnTo;
+        res.redirect(redirectUrl);
+    }
 );
 
 router.get("/logout", (req, res, next) => {

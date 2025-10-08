@@ -38,7 +38,7 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
         res.render("pages/boardgames/showpage", {game});
 }));
 
-router.get("/:id/edit", asyncHandler(async (req, res, next) => {
+router.get("/:id/edit", needLogin, asyncHandler(async (req, res, next) => {
     const allCreators = await Creator.findAll();
     const allPublishers = allCreators.filter(c => c.type == "publisher");
     const allDesigners = allCreators.filter(c => c.type == "designer");
