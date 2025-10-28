@@ -20,60 +20,85 @@ section {
     bottom: 0;
     transform: translateY(-50%); 
     padding: 0 $padding-med;
-    z-index: 5;
+    z-index: 3;
+    pointer-events: none;
 }
 
 .carousel-prev, .carousel-next {
-    z-index: 5;
     background-color: rgba(0, 0, 0, 0.5); 
     color: white;
     border: none;
     padding: 10px;
     font-size: 1.5rem;
     border-radius: 50%;
-    z-index: 99;
+    pointer-events: auto;
 }
 
 #home-carousel {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 60vh;
     margin: auto;
     overflow: hidden;
-    // background-color: $body-color;
 }
 
 .slide {
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
+    inset: 0;
+    
     transition: transform 0.5s ease-in-out;
-    display: none;
-    top: 0;
+    transform: translateX(100%);
+    opacity: 0;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(map-get($colors, primary), 0.4);
+        z-index: 2;
+    }
 
     img {
-        margin-left: 50%;
-        transform: translateX(-50%);
-        // height: 100%;
-        width: 1625px;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
     }
 }
 
 .active-slide {
     display: block; 
     z-index: 2;
+    transform: translateX(0);
+    color: black;
+    opacity: 1;
 }
 
 .prev-slide {
     transform: translateX(-100%);
-    display: block;
-    z-index: 1;
+    opacity: 0;
 }
 
 .next-slide {
     transform: translateX(100%);
-    display: block;
-    z-index: 1;
+    opacity: 0;
+}
+
+.slide-content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    z-index: 4;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-content-box {
@@ -88,7 +113,7 @@ section {
 
 #perks-box {
     padding: $padding-big $padding-med;
-    background-color: $contrast;
+    background-color: map-get($colors, accent);
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -107,18 +132,18 @@ section {
     align-items: center;
     justify-content: center;
     padding: $padding-med;
-    background-color: $white;
+    background-color: map-get($colors, background);
     border-radius: 50%;
     box-sizing: border-box;
-    box-shadow: 0px 3px 3px rgba($black, 0.2);
-    color: $black;
+    box-shadow: 0px 3px 3px rgba(map-get($colors, text), 0.2);
+    color: map-get($colors, text);
 }
 
 .perk-text {
     p {
         margin: 0;
         margin-bottom: $padding-small;
-        color: $black;
+        color: map-get($colors, text);
     }
 }
 
@@ -130,12 +155,12 @@ section {
 .perk-description {
     font-weight: 350;
     font-size: 0.9em;
-    color: $body-light; 
+    color: map-get($colors, primary); 
 }
 
 #about-box {
-    background-color: $primary;
-    color: $white;
+    background-color: map-get($colors, primary);
+    color: map-get($colors, background);
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -154,7 +179,7 @@ section {
             position: absolute;
             width: 50px;
             height: 3px;
-            background-color: $contrast;
+            background-color: map-get($colors, accent);
             left: 50%;
             transform: translateX(-50%);
             bottom: 0;
@@ -163,7 +188,7 @@ section {
 }
 
 #category-section {
-    background-color: $contrast;
+    background-color: map-get($colors, accent);
     padding: $padding-small $padding-big;
     text-align: center;
     h4 {
