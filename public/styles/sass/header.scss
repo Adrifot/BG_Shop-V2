@@ -3,7 +3,7 @@
 #navbar-top {
     width: 100%;
     position: sticky;
-    background-color: $primary;
+    background-color: map-get($colors, primary);
     top: 0;
     z-index:9
 }
@@ -39,7 +39,7 @@ header ul {
     list-style: none;
     a {
         text-decoration: none;
-        color: $white;
+        color: map-get($colors, background);
     }
 }
 

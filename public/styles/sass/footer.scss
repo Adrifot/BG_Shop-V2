@@ -1,14 +1,14 @@
 @import "custom";
 
 footer {
-    background-color: $primary;
+    background-color: map-get($colors, primary);
     width: 100%;
     padding: $padding-med 0;
     ul {
         list-style: none;
         a {
             text-decoration: none;
-            color: $white;
+            color: map-get($colors, background);
         }
     }
 }
@@ -34,7 +34,7 @@ footer {
 
 #footer-left, #footer-right, #social-icons {
     width: 30%;
-    color: $white;
+    color: map-get($colors, background);
 }
 
 #footer-logo {

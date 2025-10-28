@@ -6,13 +6,13 @@
 }
 
 main {
-    width: 80%;
+    width: 70%;
     margin: auto;
     margin-bottom: 1em;
 }
 
-.btn-yellow {
-    background-color: $yellow;
+.btn-accent {
+    background-color: map-get($colors, accent);
     padding: $padding-med;
     border: none;
     border-radius: 0.5em;
@@ -23,7 +23,7 @@ a:not(.anchor-no-effect) {
     transition: all 0.3s linear;
     padding-bottom: 0.1em;
     &:hover {
-        color: $yellow;
+        color: map-get($colors, accent);
         &::after {
             transform: scaleX(100%);
         }
@@ -37,7 +37,7 @@ a:not(.anchor-no-effect) {
         transform: scaleX(0);
         bottom: 0;
         left: 0;
-        background-color: $yellow;
+        background-color: map-get($colors, accent);
         transform-origin: center;
         transition: all 0.3s ease-in-out;
     }
