@@ -11863,9 +11863,16 @@ main {
 
 .btn-accent {
   background-color: #faaa14;
-  padding: 0.5em;
+  color: #220203;
+  font-weight: 600;
   border: none;
   border-radius: 0.5em;
+  padding: 0.5rem 1rem;
+  transition: all 0.15s linear;
+}
+.btn-accent:hover {
+  background-color: #4e8c31;
+  color: #ffffff;
 }
 
 a:not(.anchor-no-effect) {

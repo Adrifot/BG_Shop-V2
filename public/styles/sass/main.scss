@@ -13,9 +13,17 @@ main {
 
 .btn-accent {
     background-color: map-get($colors, accent);
-    padding: $padding-med;
+    color: map-get($colors, text);
+    font-weight: 600;
     border: none;
     border-radius: 0.5em;
+    padding: $padding-med $padding-big;
+    transition: all 0.15s linear;
+
+    &:hover {
+        background-color: map-get($colors, secondary);
+        color: map-get($colors, background)
+    }
 }
 
 a:not(.anchor-no-effect) {

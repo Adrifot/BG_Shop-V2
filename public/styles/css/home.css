@@ -11850,14 +11850,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-section {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 1em 0.5em;
-  margin-bottom: 1em;
-}
-
 .slide-buttons {
   position: absolute;
   display: flex;
@@ -11869,7 +11861,7 @@ section {
   right: 0;
   bottom: 0;
   transform: translateY(-50%);
-  padding: 0 0.5em;
+  padding: 0 0.5rem;
   z-index: 3;
   pointer-events: none;
 }
@@ -11890,6 +11882,7 @@ section {
   height: 60vh;
   margin: auto;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .slide {
@@ -11897,7 +11890,7 @@ section {
   width: 100%;
   height: 100%;
   inset: 0;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.4s linear;
   transform: translateX(100%);
   opacity: 0;
 }
@@ -11905,7 +11898,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(11, 58, 71, 0.4);
+  background-color: rgba(11, 58, 71, 0.5);
   z-index: 2;
 }
 .slide img {
@@ -11946,12 +11939,22 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
+}
+.slide-content > * {
+  margin: 0.5rem 0;
+}
+.slide-content h1, .slide-content .h1 {
+  font-weight: 600;
+}
+.slide-content h5, .slide-content .h5 {
+  font-weight: 500;
 }
 
 .home-content-box {
-  padding: 1em 0;
-  text-align: center;
-  display: flex;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
 }
 .home-content-box > p {
   width: 30%;
@@ -11959,13 +11962,12 @@ section {
 }
 
 #perks-box {
-  padding: 1em 0.5em;
-  background-color: #faaa14;
+  padding: 1rem 0.5rem;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  border-radius: 0 0 10px 10px;
+  display: flex;
 }
 
 .perk {
@@ -11974,54 +11976,57 @@ section {
 
 .perk-icon {
   font-size: 2em;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5em;
-  background-color: #ffffff;
+  padding: 0.5rem;
   border-radius: 50%;
   box-sizing: border-box;
-  box-shadow: 0px 3px 3px rgba(34, 2, 3, 0.2);
-  color: #220203;
+  color: #4e8c31;
 }
 
 .perk-text p {
-  margin: 0;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.5rem;
   color: #220203;
 }
 
 .perk-title {
-  font-weight: 600;
-  font-size: 1.1em;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .perk-description {
-  font-weight: 350;
-  font-size: 0.9em;
+  font-weight: 400;
+  font-size: 1rem;
   color: #0b3a47;
 }
 
 #about-box {
   background-color: #0b3a47;
   color: #ffffff;
+  display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 }
 #about-box div {
-  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  width: 50%;
 }
-#about-box h3, #about-box .h3 {
+#about-box img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+#about-box h2, #about-box .h2 {
   position: relative;
   padding-bottom: 0.5em;
 }
-#about-box h3::after, #about-box .h3::after {
+#about-box h2::after, #about-box .h2::after {
   content: "";
   position: absolute;
   width: 50px;
@@ -12034,11 +12039,11 @@ section {
 
 #category-section {
   background-color: #faaa14;
-  padding: 0.2em 1em;
+  padding: 0.25rem 1rem;
   text-align: center;
 }
 #category-section h4, #category-section .h4 {
-  padding: 0.5em;
+  padding: 0.5rem;
 }
 
 #categories-grid {
@@ -12051,7 +12056,7 @@ section {
 }
 #categories-grid .category-card img {
   width: 100%;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 #categories-grid .category-card h5, #categories-grid .category-card .h5 {
   text-align: center;
