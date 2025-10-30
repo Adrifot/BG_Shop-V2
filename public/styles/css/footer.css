@@ -8,6 +8,7 @@
 [data-bs-theme=light] {
   --bs-text: #220203;
   --bs-background: #ffffff;
+  --bs-background-dark: #d6d6d6;
   --bs-primary: #0b3a47;
   --bs-secondary: #4e8c31;
   --bs-accent: #faaa14;
