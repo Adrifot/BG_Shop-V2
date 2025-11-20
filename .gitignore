@@ -1,7 +1,3 @@
 node_modules/
 *.css.map
 drafts/
-
-# Temporary: will be readded after merge
-views/boardgames/edit.ejs
-views/boardgames/new.ejs
